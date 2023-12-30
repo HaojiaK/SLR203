@@ -1,5 +1,8 @@
 Here are the exercises of the [MQTT Lab](https://perso.telecom-paristech.fr/diacones/mqtt/mqtt-tp.html#downloadPaho)
 
+# 3. Eclipse Paho: MQTT Java Client
+This part is mainly depends on folder ./MQTT_Client
+
 ## Differences Between Ex.3.2 and Ex.3.3
 
 Based on the provided descriptions for Ex.3.2 and Ex.3.3, the main difference lies in the roles and responsibilities of the MQTT client:
