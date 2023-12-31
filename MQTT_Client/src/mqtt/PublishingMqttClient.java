@@ -10,9 +10,10 @@ public class PublishingMqttClient {//synchronous client
 	
 	public static void main(String[] args) throws InterruptedException {
 		
-		String topic        = "local/hello";
+		String topic        = "test"; // For excerise 4, change the topic into test
 	    String messageContent = "Message from my Lab's Paho Mqtt Client";
-	    int qos             = 0;
+	    int qos             = args[0].equals("0")?0:args[0].equals("1")?1:2; //Quality of Service level
+		boolean clean_session = args[1].equals("true"); // Clean Session flag
 	    String brokerURI       = "tcp://localhost:1883";
 	    String clientId     = "myClientID_Pub";
 	    //MemoryPersistence persistence = new MemoryPersistence();
