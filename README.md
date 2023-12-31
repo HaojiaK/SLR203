@@ -12,6 +12,15 @@ Ex.3.2 (Publisher): In this exercise, you implemented an MQTT client that acts a
 
 Ex.3.3 (Subscriber): In this exercise, you are required to implement an MQTT client that acts as a subscriber. The subscriber connects to the same MQTT broker and subscribes to the topic that the publisher is publishing to. The subscriber must remain connected and continuously listen for incoming messages without disconnecting after receiving a message.
 ___
+### Explain some variables: 
+* **BrokerURI**:
+
+Both the client and subscriber can share the same `brokerURI`. This URI specifies the address and protocol for connecting to the MQTT broker. In my code, both the `PublishingMqttClient` and `SubscribingMqttClient` are using `tcp://localhost:1883`, which is the default URI for an MQTT broker running on the localhost at port 1883.
+
+* **ClientID**:
+
+However, the `clientId` should ideally be unique for each client to avoid conflicts. The client ID is used by the broker to identify each client uniquely. If two clients try to connect with the same client ID, it can lead error (I tried, it's true :cry:).
+___
 
 ## 4. Testing Process
 
@@ -61,3 +70,8 @@ In summary, the combination of `clean_session = true` and `qos = 0` ensures that
 
 ### 4.2
 >
+
+
+Reference: 
+[1][ttperr/SLR203](https://github.com/ttperr/SLR203/blob/main/src/mqtt/SubscribingMqttClient.java) :+1:
+[2] chatGPT :+1:

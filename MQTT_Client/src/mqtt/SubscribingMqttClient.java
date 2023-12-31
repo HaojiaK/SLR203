@@ -12,11 +12,12 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 public class SubscribingMqttClient implements MqttCallback {//synchronous client
 	public static void main(String[] args) throws InterruptedException {
 		
-		String topic        = "local/hello";
-	    String messageContent = "Message from my Lab's Paho Mqtt Client";
-	    int qos             = 0;
+		String topic        = "test";
+		//This is subscribing client, so don't need the message content
+	    int qos             = args[0].equals("0")?0:args[0].equals("1")?1:2;
+		boolean clean_session = args[1].equals("true");
 	    String brokerURI       = "tcp://localhost:1883";
-	    String clientId     = "myClientID_Pub";
+	    String clientId     = "myClientID_Sub";
 	    //MemoryPersistence persistence = new MemoryPersistence();
 	    
 	    
@@ -27,16 +28,21 @@ public class SubscribingMqttClient implements MqttCallback {//synchronous client
 			////specify the Mqtt Client's connection options
 			MqttConnectOptions connectOptions = new MqttConnectOptions();
 			//clean session 
-			connectOptions.setCleanSession(false);
+			connectOptions.setCleanSession(clean_session);
 			//customise other connection options here...
 			//...
-
+	
 			//Set callback
 			mqttClient.setCallback(new SubscribingMqttClient());
 			//connect the mqtt client to the broker
+			System.out.println("Mqtt Client: Connection to Mqtt Broker running at: " + brokerURI);
 			mqttClient.connect(connectOptions);     
+			System.out.println("Mqtt Client: successfully connected.");
+
 			//Subscribe to the topic
-			mqttClient.subscribe(topic);
+			System.out.println("Mqtt Client: Subscribing to topic: " + topic);
+			mqttClient.subscribe(topic, qos);
+			System.out.println("Mqtt Client: successfully subscribed to the topic.");
 			//Keep the subscriber running
 			while(true){
 				System.out.println("Subscriber: Wait for the messages");
