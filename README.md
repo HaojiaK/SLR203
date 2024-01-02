@@ -79,6 +79,48 @@ In summary, the combination of `clean_session = true` and `qos = 0` ensures that
 
 ## 5 MQTT WebSockets via JavaScript Client
 
+## 6 MQTT Binary Stream Client
+
+### Objectives:
+
+1. **Understand MQTT Packet Formatting**: Gain insight into how MQTT binary packets are formatted, depending on their semantics.
+  
+2. **Message Sequences**: Understand the sequences of messages between MQTT client sessions and the MQTT broker.
+
+3. **Communication with MQTT Broker**: Determine how to establish communication with the MQTT broker to send and receive messages.
+
+4. **Format MQTT Packets**: Learn how to format various MQTT packets for different message types (e.g., CONNECT, PUBLISH, SUBSCRIBE).
+
+5. **Interpret Responses**: Understand how to interpret response messages from the MQTT broker (e.g., CONNACK, PUBACK, SUBACK).
+
+### How to Approach:
+
+1.**Communication with MQTT Broker**:
+
+- Use Java Sockets or network read/write command-line tools like `netcat` (`nc`) to establish communication with the JoramMQ Broker.
+
+2.**Send and Receive Binary Packets**:
+
+- Implement logic to send and receive MQTT binary packets. Understand the MQTT packet structure and serialization/deserialization of packets.
+
+3.**Format MQTT Packets**:
+
+- Manually format MQTT packets based on their message types. Set the appropriate fields in the packet header and payload according to the MQTT protocol specification.
+
+4.**Interpret Responses**:
+
+- After sending a packet, interpret the response from the broker according to the MQTT protocol to understand the outcome of your operation.
+
+### Concepts to Understand(Review):
+
+1. **MQTT Packets**: Familiarize yourself with the structure of different MQTT packets like CONNECT, PUBLISH, SUBSCRIBE, CONNACK, PUBACK, SUBACK, etc.
+
+2. **Message Sequencing**: Understand the sequence of messages exchanged between the client and the broker during various o
+
+3. **Quality of Service (QoS)**: Understand the different levels of QoS (0, 1, 2) and how they affect message delivery and acknowledgment.
+
+4. **Session Persistence**: Understand the concept of session persistence in MQTT, especially the `clean_session` flag.
+
 Reference: 
 [1][ttperr/SLR203](https://github.com/ttperr/SLR203/blob/main/src/mqtt/SubscribingMqttClient.java) :+1:
 
