@@ -32,7 +32,11 @@ For the testing process, I changed the codes directly on the ./MQTT_Client/src/m
 `javac -cp "lib/*" src/mqtt/SubscribingMqttClient.java` 
 This can generate the SubscribingMqttClient.class under the folder src/mqtt/
 `java -cp "lib/*:src" mqtt.SubscribingMqttClient arg0 arg1 arg2`
-In our code, the arg0 refers to qos, arg1 refers to clean_session, arg2 refers to retained, arg3 refers to number_of_messages
+In our code, the arg0 refers to qos, arg1 refers to clean_session, arg2 refers to retained, arg3 refers to number_of_messages. 
+This command is used to run the class
+
+** First run the SubscribingMqttClient then run the PublishingMqttClient **
+
 
 ```java
 int qos = args[0].equals("0") ? 0 : args[0].equals("1") ? 1 : 2;
@@ -47,7 +51,9 @@ if (args[0].equals("0")) {
     qos = 2;
 }
 ```
-### 4.1
+### 4
+ 
+A problem for this part. No matter how I change the code, the subscriber can always achieve some values.
 >Testing Process
 Test 4.1:
 Use the following configuration settings
@@ -71,7 +77,9 @@ In summary, the combination of `clean_session = true` and `qos = 0` ensures that
 ### 4.2
 >
 
+## 5 MQTT WebSockets via JavaScript Client
 
 Reference: 
 [1][ttperr/SLR203](https://github.com/ttperr/SLR203/blob/main/src/mqtt/SubscribingMqttClient.java) :+1:
+
 [2] chatGPT :+1:
