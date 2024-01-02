@@ -115,13 +115,14 @@ In summary, the combination of `clean_session = true` and `qos = 0` ensures that
 
 1. **MQTT Packets**: Familiarize yourself with the structure of different MQTT packets like CONNECT, PUBLISH, SUBSCRIBE, CONNACK, PUBACK, SUBACK, etc.
 
-2. **Message Sequencing**: Understand the sequence of messages exchanged between the client and the broker during various o
+2. **Message Sequencing**: Understand the sequence of messages exchanged between the client and the broker during various operations.
 
 3. **Quality of Service (QoS)**: Understand the different levels of QoS (0, 1, 2) and how they affect message delivery and acknowledgment.
 
 4. **Session Persistence**: Understand the concept of session persistence in MQTT, especially the `clean_session` flag.
 
-Reference: 
+## Reference: 
+
 [1][ttperr/SLR203](https://github.com/ttperr/SLR203/blob/main/src/mqtt/SubscribingMqttClient.java) :+1:
 
 [2] chatGPT :+1:
