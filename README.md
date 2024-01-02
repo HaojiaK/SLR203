@@ -113,9 +113,38 @@ In summary, the combination of `clean_session = true` and `qos = 0` ensures that
 
 ### Concepts to Understand(Review):
 
-1. **MQTT Packets**: Familiarize yourself with the structure of different MQTT packets like CONNECT, PUBLISH, SUBSCRIBE, CONNACK, PUBACK, SUBACK, etc.
+1. **MQTT Packets**: 
 
-2. **Message Sequencing**: Understand the sequence of messages exchanged between the client and the broker during various operations.
+MQTT uses a simple packet structure composed of different types of packets. Each packet starts with a fixed header tht contains flags, type, and length information. The packet types include:
+
+* CONNECT: Client reauest to connect to the broker.
+* CONNACK: Acknowledgement of connection request.
+* PUBLLISH: Publish a message to a topic.
+* PUBACK: Acknowledgement of a PUBLISH packet.
+* SUBSCRIBE: Subscribe to a topic.
+* SUBACK: Acknowledgement of a subscription request.
+* DISCONNECT: Client requesst to disconnect from the broker.
+
+The fixed header for each packet contains:
+* Command Type: 4 bits
+* Control Flags: 4 bits
+* Remaining Length: Variable length
+
+
+2. **Message Sequencing**: 
+    1. Connection establishement: 
+        1. Client Sends: 'CONNECT' packet 
+        2. Broker Responds: 'CONNAK' packet
+    2. Publishing Messages:
+        1. Client Sends: 'PUBLISH' packet
+        2. Broker Responds: 'PUBACK' packet (if QoS level is 1)
+    3. Subscribing to Topics:
+        1. Client Sends: 'SUBSCRIBE' packet
+        2. Broker Responds: 'SUBACK' packet
+    4. Unsubscribing from Topics:
+        1. Client Sends: 'UNSUBSCRIBE' packet
+        2. Broker Responds:'UNSUBACK' packet
+    
 
 3. **Quality of Service (QoS)**: Understand the different levels of QoS (0, 1, 2) and how they affect message delivery and acknowledgment.
 
